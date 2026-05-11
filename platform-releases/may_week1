@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release Notes | Ilmu</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --border: #e4e2d8;
+    --text-primary: #181816;
+    --text-secondary: #6b6b64;
+    --text-muted: #a0a099;
+    --badge-new-bg: #d4f0e4;
+    --badge-new-text: #0a5c3e;
+    --badge-fix-bg: #fde8df;
+    --badge-fix-text: #8a2e10;
+    --badge-imp-bg: #e8e5f8;
+    --badge-imp-text: #3a2f8a;
+    --hover-bg: #f0eeea;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111110;
+      --surface: #1a1a18;
+      --border: #2e2e2a;
+      --text-primary: #f0eeea;
+      --text-secondary: #a0a099;
+      --text-muted: #666660;
+      --badge-new-bg: #0a3d28;
+      --badge-new-text: #6dd9aa;
+      --badge-fix-bg: #4a1b0c;
+      --badge-fix-text: #f5c4b3;
+      --badge-imp-bg: #26215c;
+      --badge-imp-text: #cecbf6;
+      --hover-bg: #222220;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 60px 24px 100px;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+  .nav-brand {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--text-primary); }
+
+  .header { margin-bottom: 48px; }
+  .header-meta {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .header-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  .year-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 40px 0 8px;
+  }
+
+  .release-list { list-style: none; }
+
+  .release-item a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-primary);
+    gap: 16px;
+    transition: background 0.1s;
+    border-radius: 4px;
+  }
+  .release-item a:hover { color: var(--text-primary); }
+  .release-item a:hover .release-title { text-decoration: underline; text-underline-offset: 3px; }
+
+  .release-left { display: flex; flex-direction: column; gap: 6px; }
+
+  .release-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .release-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .release-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .tag-new { background: var(--badge-new-bg); color: var(--badge-new-text); }
+  .tag-fix { background: var(--badge-fix-bg); color: var(--badge-fix-text); }
+  .tag-imp { background: var(--badge-imp-bg); color: var(--badge-imp-text); }
+
+  .release-arrow {
+    font-size: 16px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer a { color: var(--text-secondary); text-decoration: none; }
+  .footer a:hover { color: var(--text-primary); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+    <p class="header-meta">Ilmu API Platform</p>
+    <h1>Release Notes</h1>
+    <p class="header-desc">Product updates, bug fixes, and improvements — shipped monthly.</p>
+  </header>
+
+  <hr>
+
+  <!-- 2026 -->
+  <p class="year-label">2026</p>
+  <ul class="release-list">
+
+    <li class="release-item">
+      <a href="ilmu_release_notes_may_week1.html">
+        <div class="release-left">
+          <span class="release-date">May 2026</span>
+          <span class="release-title">Billing, compliance &amp; developer experience updates</span>
+          <div class="release-tags">
+            <span class="tag tag-new">NEW</span>
+            <span class="tag tag-fix">FIX</span>
+            <span class="tag tag-imp">IMPROVED</span>
+          </div>
+        </div>
+        <span class="release-arrow">→</span>
+      </a>
+    </li>
+
+    <!-- Add future entries above this comment, copy the <li> block -->
+    <!-- Example for next month:
+
+    <li class="release-item">
+      <a href="releases/2026-06.html">
+        <div class="release-left">
+          <span class="release-date">June 2026</span>
+          <span class="release-title">Your release title here</span>
+          <div class="release-tags">
+            <span class="tag tag-new">NEW</span>
+          </div>
+        </div>
+        <span class="release-arrow">→</span>
+      </a>
+    </li>
+
+    -->
+
+  </ul>
+
+  <footer class="footer">
+    <span>© 2026 Ilmu by Frog Asia</span>
+    <span><a href="#">Documentation</a> &nbsp;·&nbsp; <a href="#">Support</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
