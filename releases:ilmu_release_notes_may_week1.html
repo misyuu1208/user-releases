@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilmu Release Notes – May 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+      background: #f5f5f8;
+      display: flex;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* ── Root ─────────────────────────────────────────────── */
+    .rn-root {
+      width: 100%;
+      max-width: 700px;
+      padding: 1.75rem 2.25rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      align-self: flex-start;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .rn-header {
+      background: linear-gradient(135deg, #f5f3ff 0%, #eff6ff 100%);
+      border-left: 4px solid #5B5BD6;
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .rn-date {
+      font-size: 11px;
+      font-weight: 700;
+      color: #5B5BD6;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0 0 0.45rem;
+    }
+
+    .rn-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #111;
+      margin: 0 0 0.55rem;
+      line-height: 1.3;
+    }
+
+    .rn-subtitle {
+      font-size: 13.5px;
+      color: #555;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── Divider ──────────────────────────────────────────── */
+    .rn-divider {
+      border: none;
+      border-top: 1px solid rgba(91, 91, 214, 0.15);
+      margin: 1.5rem 0;
+    }
+
+    /* ── Section ──────────────────────────────────────────── */
+    .rn-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .rn-section-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #5B5BD6;
+      margin: 0 0 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rn-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(91, 91, 214, 0.3), transparent);
+    }
+
+    /* ── Items ────────────────────────────────────────────── */
+    .rn-item {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+    }
+
+    .rn-badge-wrap {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 3px;
+    }
+
+    .rn-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .badge-new      { background: #CCFAE8; color: #0A6644; }
+    .badge-fix      { background: #FFE4D6; color: #B53D1E; }
+    .badge-improved { background: #E0E0FF; color: #3730A3; }
+
+    .rn-item-text {
+      font-size: 14px;
+      color: #111;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .rn-item-text strong {
+      font-weight: 600;
+    }
+
+    .rn-item-text code {
+      font-size: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      background: rgba(91, 91, 214, 0.08);
+      color: #4338CA;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* ── Dark mode ────────────────────────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d0d10; }
+
+      .rn-root {
+        background: #17171e;
+        border-color: rgba(255, 255, 255, 0.07);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+      }
+
+      .rn-header {
+        background: linear-gradient(135deg, rgba(91, 91, 214, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%);
+      }
+
+      .rn-date        { color: #9E9EF7; }
+      .rn-title       { color: #F1F1FA; }
+      .rn-subtitle    { color: #A0A0B8; }
+      .rn-section-label { color: #9E9EF7; }
+      .rn-section-label::after { background: linear-gradient(to right, rgba(158, 158, 247, 0.3), transparent); }
+      .rn-divider     { border-color: rgba(158, 158, 247, 0.12); }
+      .rn-item-text   { color: #E8E8F0; }
+
+      .badge-new      { background: #064232; color: #6EE7B7; }
+      .badge-fix      { background: #3D1406; color: #FCA58A; }
+      .badge-improved { background: #1E1B52; color: #A5B4FC; }
+
+      .rn-item-text code { background: rgba(158, 158, 247, 0.12); color: #A5B4FC; }
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 520px) {
+      body { padding: 1rem 0.75rem; }
+      .rn-root { padding: 1.25rem 1.25rem; border-radius: 8px; }
+      .rn-item { grid-template-columns: 70px 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="rn-root">
+  <h2 class="sr-only">Ilmu API Platform Release Notes</h2>
+
+  <div class="rn-header">
+    <p class="rn-date">May 2026</p>
+    <h1 class="rn-title">Billing, compliance &amp; developer experience updates</h1>
+    <p class="rn-subtitle">This release improves billing reliability, adds LHDN e-invoice compliance, tightens subscription lifecycle management, and improves the developer onboarding experience.</p>
+  </div>
+
+  <div class="rn-section">
+    <p class="rn-section-label">Billing &amp; Payments</p>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-new">New</span></div>
+      <p class="rn-item-text">Invoices and receipts now include official invoice and receipt numbers, are available as downloadable PDFs, and support the <strong>LHDN e-invoice workflow</strong> for Malaysian tax compliance.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-new">New</span></div>
+      <p class="rn-item-text">Subscriptions are now <strong>automatically suspended</strong> on the first failed recurring charge, giving you a clear signal to update your payment method before access is affected.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-new">New</span></div>
+      <p class="rn-item-text"><strong>Cancelled subscriptions</strong> now expire at the correct period-end date rather than remaining active indefinitely.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-fix">Fix</span></div>
+      <p class="rn-item-text">Receipt PDF timestamps now display in <strong>Asia/Kuala Lumpur time</strong> instead of UTC.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-fix">Fix</span></div>
+      <p class="rn-item-text">Razorpay webhooks arriving outside the 5-minute validity window are now correctly rejected, improving payment security.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-fix">Fix</span></div>
+      <p class="rn-item-text">Resolved a bug that was <strong>doubling token balances</strong> for users with stacked subscriptions.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-fix">Fix</span></div>
+      <p class="rn-item-text">Add-on packs purchased under a <code>past_due</code> subscription are now correctly nested rather than appearing as orphaned line items.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-fix">Fix</span></div>
+      <p class="rn-item-text">One-off pack models are now correctly surfaced on <code>/subscriptions/current</code> and <code>/v1/models</code>, so clients always see the full set of models available to them.</p>
+    </div>
+  </div>
+
+  <hr class="rn-divider">
+
+  <div class="rn-section">
+    <p class="rn-section-label">Plans &amp; Provisioning</p>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-new">New</span></div>
+      <p class="rn-item-text"><strong>Free plan provisioning is now gated</strong> — users claiming an invite code whose phone number is already associated with an existing account will receive a clear notification instead of silently failing, covering both standard and email-last verification flows.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-improved">Improved</span></div>
+      <p class="rn-item-text">One-off token allocations have been refactored for consistency, and lifetime pack usage math has been corrected. Inactive entitlements are now surfaced correctly in account views.</p>
+    </div>
+  </div>
+
+  <hr class="rn-divider">
+
+  <div class="rn-section">
+    <p class="rn-section-label">Developer Experience</p>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-new">New</span></div>
+      <p class="rn-item-text">The dashboard now shows a <strong>tool-aware Quick Start card</strong> that adapts its guidance based on which tools and API keys you have configured, making it faster to get to your first successful call.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-improved">Improved</span></div>
+      <p class="rn-item-text">Streaming (SSE) responses are now more robust — partial lines are buffered correctly in the search interceptor, preventing truncated events from reaching clients.</p>
+    </div>
+  </div>
+
+  <hr class="rn-divider">
+
+  <div class="rn-section">
+    <p class="rn-section-label">Documentation &amp; Console</p>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-improved">Improved</span></div>
+      <p class="rn-item-text">Billing page FAQ updated with clearer information. The plan comparison modal and "What you'll get" link have been removed to simplify the upgrade flow.</p>
+    </div>
+
+    <div class="rn-item">
+      <div class="rn-badge-wrap"><span class="rn-badge badge-improved">Improved</span></div>
+      <p class="rn-item-text">Coding plan documentation and terminology have been refreshed to reflect current naming and capabilities.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
